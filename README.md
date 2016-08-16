@@ -1,4 +1,5 @@
 # Test Driven Development With Python
 
-Using test to develop Python with Django projects
+Functional testing to develop Python projects.
+The projects use Python, Django, and Selenium.
 
