@@ -4,8 +4,8 @@ import unittest
 
 class NewVistorTest(unittest.TestCase):
   def setUp(self):
-    self.browser = webdriver.Firefox()
-    self.browser.implicitly_wait(3)
+      self.browser = webdriver.Firefox()
+      self.browser.implicitly_wait(3)
 
   def tearDown(self):
     self.browser.quit()
@@ -19,14 +19,21 @@ class NewVistorTest(unittest.TestCase):
 
     #user is invited to enter a to-do item straight away
     inputbox = self.browser.find_element_by_id('id_new_item')
-    self.assertEqual(inputbox.get_attribute('placeholder'), 'Enter a to-do item')
+    self.assertEqual(
+            inputbox.get_attribute('placeholder'),
+            'Enter a to-do item'
+            )
+    inputbox.send_keys('Buy peacock feathers')
 
     #User types an action in to test box
     inputbox.send_keys(Keys.ENTER)
 
     table = self.browser.find_element_by_id('id_list_table')
     rows = table.find_element_by_tag_name('tr')
-    self.assertTrue(any(row.text == '1: Buy peacock feathers' for row in rows))
+    self.assertTrue(
+      any(row.text == '1: Buy peacock feathers' for row in rows)
+      )
+
     self.fail('Finsh the test')
 
 
